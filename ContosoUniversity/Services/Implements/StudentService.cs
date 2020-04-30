@@ -14,9 +14,9 @@ namespace ContosoUniversity.Services.Implements
             this.studentRepository = studentRepository;
         }
 
-        public async Task<IEnumerable<Course>> GetCourseByStudent(int id)
-        {
-            return await studentRepository.GetCourseByStudent(id);
-        }
+        //public async Task<IEnumerable<Course>> GetCourseByStudent(int id)
+        //{
+        //    return await studentRepository.GetCourseByStudent(id);
+        //}
     }
 }
