@@ -6,17 +6,26 @@ using System.Threading.Tasks;
 namespace ContosoUniversity.Services.Implements
 {
     public class StudentService : GenericService<Student>, IStudentService
+
     {
         private IStudentRepository studentRepository;
 
         public StudentService(IStudentRepository studentRepository) : base(studentRepository)
         {
+
             this.studentRepository = studentRepository;
         }
 
-        //public async Task<IEnumerable<Course>> GetCourseByStudent(int id)
-        //{
-        //    return await studentRepository.GetCourseByStudent(id);
-        //}
+        public Task<IEnumerable<Course>> GetCourseByStudent(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Course>> GetCoursesByStudent(int id)
+        {
+            return await studentRepository.GetCoursesByStudent(id);
+        }
+
     }
+
 }

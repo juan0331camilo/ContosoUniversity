@@ -20,13 +20,25 @@ namespace ContosoUniversity.Controllers
             this.mapper = mapper;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var data = await studentService.GetAll();
+            // var data = await studentService.GetAll();
 
+            //var listStudents = data.Select(x => mapper.Map<StudentDTO>(x)).ToList();
+
+            //return View(listStudents);
+
+            if (id != null)
+            {
+                var dataCourse = await studentService.GetCourseByStudent(id.Value);
+                ViewBag.Course = dataCourse.Select(x => mapper.Map<CourseDTO>(x)).ToList();
+            }
+
+            var data = await studentService.GetAll();
             var listStudents = data.Select(x => mapper.Map<StudentDTO>(x)).ToList();
 
             return View(listStudents);
+
         }
 
         public IActionResult Create()
